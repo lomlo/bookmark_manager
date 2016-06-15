@@ -1,7 +1,7 @@
 ENV['RACK_ENV'] = 'test'
 
 require './models/link'
-require_relative './features/web_helpers'
+require_relative './features/web_helper'
 require 'database_cleaner'
 require 'tilt/erb'
 
