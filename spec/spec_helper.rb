@@ -9,6 +9,7 @@ require 'rspec'
 require './models/link'
 require 'database_cleaner'
 require 'features/web_helper'
+require 'sinatra/flash'
 
 Capybara.app = BookmarkManager
 
