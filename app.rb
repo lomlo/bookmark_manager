@@ -8,7 +8,7 @@ class BookmarkManager < Sinatra::Base
 
 
   enable :sessions
-  # set :session_secret, 'super secret'
+  set :session_secret, 'super secret'
   register Sinatra::Flash
 
   get '/links' do
@@ -51,6 +51,15 @@ class BookmarkManager < Sinatra::Base
       flash.now[:errors] = @user.errors.full_messages
       erb :'users/new'
     end
+  end
+
+  get '/login' do
+    erb :'users/login'
+  end
+
+  post '/login_check' do
+    redirect '/links' if User.validate(params[:email], params[:password])
+    redirect '/login'
   end
 
   helpers do
