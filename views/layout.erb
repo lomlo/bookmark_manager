@@ -9,6 +9,9 @@
   <h2>Probably the best bookmark site on the internetz</h2>
 
   <body>
+    <% if @logout %>
+      Goodbye <%= @logout %>
+    <% end %>
     <% if current_user %>
       Welcome, <%= current_user.email %>!
     <% end %>

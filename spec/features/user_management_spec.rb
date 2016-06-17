@@ -37,12 +37,13 @@ feature 'User sign up' do
     click_button 'Log in'
     expect(current_path).to eq '/links'
   end
+end
 
-  scenario 'I can sign out' do
+feature 'User can sign out' do 
+  scenario 'whilst being signed in' do
     sign_up
     sign_out
     expect(current_path).to eq '/links'
     expect(page).to have_content('Goodbye alice@example.com')
   end
-
 end
