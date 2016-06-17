@@ -38,5 +38,11 @@ feature 'User sign up' do
     expect(current_path).to eq '/links'
   end
 
+  scenario 'I can sign out' do
+    sign_up
+    sign_out
+    expect(current_path).to eq '/links'
+    expect(page).to have_content('Goodbye alice@example.com')
+  end
 
 end

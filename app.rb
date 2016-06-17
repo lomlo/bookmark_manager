@@ -12,6 +12,7 @@ class BookmarkManager < Sinatra::Base
   register Sinatra::Flash
 
   get '/links' do
+    @name = flash[:user_name]
     @links = Link.all
     erb(:'links/index')
   end
@@ -60,6 +61,20 @@ class BookmarkManager < Sinatra::Base
   post '/login_check' do
     redirect '/links' if User.validate(params[:email], params[:password])
     redirect '/login'
+  end
+
+  get '/sign_out' do
+    erb :'users/sign_out'
+  end
+
+  post '/sign_out' do
+    if session[:user_id]
+      user = User.first(id: session[:user_id])
+      flash[:user_name] = user.email
+      session[:user_id] = nil
+      redirect '/links'
+    end
+    redirect '/sign_out'
   end
 
   helpers do

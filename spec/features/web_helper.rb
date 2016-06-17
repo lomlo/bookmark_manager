@@ -23,3 +23,8 @@ def sign_up(email: 'alice@example.com',
   fill_in :password_confirmation, with: password_confirmation
   click_button 'Sign up'
 end
+
+def sign_out
+  visit '/sign_out'
+  click_button 'Sign Out'
+end

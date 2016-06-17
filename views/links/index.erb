@@ -1,5 +1,9 @@
 <h1>Links</h1>
 
+<% if @name %>
+Goodbye <%= @name %>
+<% end %>
+
 <ul id='links'>
   <% @links.each do |link| %>
     <li>

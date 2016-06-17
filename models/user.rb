@@ -21,7 +21,7 @@ class User
   end
 
   def self.validate(email, password)
-    if user = User.first(email)
+    if user = User.first(email: email)
       return true if BCrypt::Password.new(user.password_digest) == password
     end
     false
